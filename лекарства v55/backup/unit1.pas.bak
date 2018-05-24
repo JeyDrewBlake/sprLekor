@@ -1,0 +1,90 @@
+unit Unit1;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, sqldb, db, mysql56conn, mysql51conn, FileUtil, Forms,
+  Controls, Graphics, Dialogs, StdCtrls, ComCtrls, DBGrids, ExtCtrls, DbCtrls;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
+    Image1: TImage;
+    Label1: TLabel;
+    Memo1: TMemo;
+    MySQL51Connection1: TMySQL51Connection;
+    PageControl1: TPageControl;
+    SQLQuery1: TSQLQuery;
+    SQLTransaction1: TSQLTransaction;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    procedure DBGrid1SelectEditor(Sender: TObject; Column: TColumn;
+      var Editor: TWinControl);
+    procedure FormCreate(Sender: TObject);
+    procedure GroupBox1Click(Sender: TObject);
+    procedure Memo1Change(Sender: TObject);
+
+
+    procedure MySQL56Connection1AfterConnect(Sender: TObject);
+    procedure TabControl1Change(Sender: TObject);
+  private
+
+  public
+
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+procedure TForm1.GroupBox1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Memo1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  Image1.Picture.LoadFromFile('dgfdh.jpg');
+end;
+
+procedure TForm1.DBGrid1SelectEditor(Sender: TObject; Column: TColumn;
+  var Editor: TWinControl);
+begin
+  Label1.Caption := DBGrid1.Columns.Items[1].Field.Value;
+  Memo1.Text := DBGrid1.Columns.Items[4].Field.Value;
+  Image1.Picture.LoadFromFile(DBGrid1.Columns.Items[5].Field.Value);
+end;
+
+
+
+
+
+procedure TForm1.MySQL56Connection1AfterConnect(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.TabControl1Change(Sender: TObject);
+begin
+
+end;
+
+end.
+
