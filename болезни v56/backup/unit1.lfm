@@ -1,0 +1,249 @@
+object Form1: TForm1
+  Left = 316
+  Height = 738
+  Top = 124
+  Width = 1438
+  HorzScrollBar.Page = 1344
+  VertScrollBar.Page = 728
+  AutoScroll = True
+  AutoSize = True
+  Caption = 'Form1'
+  ClientHeight = 738
+  ClientWidth = 1438
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object PageControl1: TPageControl
+    Cursor = crDrag
+    Left = 104
+    Height = 648
+    Top = 80
+    Width = 1240
+    ActivePage = TabSheet1
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Страница 1'
+      ClientHeight = 615
+      ClientWidth = 1232
+      OnContextPopup = TabSheet1ContextPopup
+      object Memo1: TMemo
+        Left = 32
+        Height = 160
+        Top = 80
+        Width = 504
+        Font.CharSet = RUSSIAN_CHARSET
+        Font.Height = -23
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Lines.Strings = (
+          'Memo1'
+        )
+        OnChange = Memo1Change
+        ParentFont = False
+        ScrollBars = ssAutoBoth
+        TabOrder = 0
+      end
+      object Image1: TImage
+        Left = 576
+        Height = 432
+        Top = 56
+        Width = 646
+        OnClick = Image1Click
+        Proportional = True
+      end
+      object Memo2: TMemo
+        Left = 152
+        Height = 120
+        Top = 272
+        Width = 384
+        Font.CharSet = RUSSIAN_CHARSET
+        Font.Height = -20
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Lines.Strings = (
+          'Memo2'
+        )
+        OnChange = Memo2Change
+        ParentFont = False
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+      end
+      object Memo3: TMemo
+        Left = 152
+        Height = 144
+        Top = 408
+        Width = 383
+        Font.CharSet = RUSSIAN_CHARSET
+        Font.Height = -20
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Lines.Strings = (
+          'Memo3'
+        )
+        ParentFont = False
+        ScrollBars = ssAutoBoth
+        TabOrder = 2
+      end
+      object Label1: TLabel
+        Left = 16
+        Height = 26
+        Top = 272
+        Width = 123
+        Caption = 'Симптомы:'
+        Font.CharSet = RUSSIAN_CHARSET
+        Font.Color = clBlue
+        Font.Height = -23
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsItalic]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 16
+        Height = 26
+        Top = 408
+        Width = 120
+        Caption = 'Лекарства:'
+        Font.CharSet = RUSSIAN_CHARSET
+        Font.Color = clBlue
+        Font.Height = -23
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsItalic]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 32
+        Height = 42
+        Top = 16
+        Width = 160
+        Caption = 'Название'
+        Font.CharSet = RUSSIAN_CHARSET
+        Font.Color = clBlue
+        Font.Height = -37
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold, fsUnderline]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DBNavigator1: TDBNavigator
+        Left = 448
+        Height = 31
+        Top = 576
+        Width = 301
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 31
+        ClientWidth = 301
+        DataSource = DataSource1
+        Options = []
+        TabOrder = 3
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Таблица'
+      ClientHeight = 615
+      ClientWidth = 1280
+      object DBGrid1: TDBGrid
+        Left = 24
+        Height = 312
+        Top = 48
+        Width = 576
+        AutoFillColumns = True
+        Color = clWindow
+        Columns = <>
+        DataSource = DataSource1
+        TabOrder = 0
+        OnSelectEditor = DBGrid1SelectEditor
+      end
+    end
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'name'
+        DataType = ftString
+        Precision = -1
+        Size = 60
+      end    
+      item
+        Name = 'symptoms'
+        DataType = ftString
+        Precision = -1
+        Size = 765
+      end    
+      item
+        Name = 'procedur'
+        DataType = ftString
+        Precision = -1
+        Size = 765
+      end    
+      item
+        Name = 'drug'
+        DataType = ftString
+        Precision = -1
+        Size = 765
+      end    
+      item
+        Name = 'txt'
+        DataType = ftString
+        Precision = -1
+        Size = 765
+      end    
+      item
+        Name = 'image'
+        DataType = ftString
+        Precision = -1
+        Size = 150
+      end>
+    Active = True
+    Database = MySQL56Connection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select name, symptoms, procedur, drug ,txt, image from ill order by name;'
+    )
+    Params = <>
+    left = 144
+    top = 8
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    left = 232
+    top = 8
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = MySQL56Connection1
+    left = 336
+    top = 8
+  end
+  object MySQL56Connection1: TMySQL56Connection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'illness'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    CharSet = 'utf8'
+    HostName = '127.0.0.1'
+    SkipLibraryVersionCheck = False
+    left = 56
+    top = 8
+  end
+end
